@@ -1,0 +1,28 @@
+Go to Docker Directory:
+cd ~/ignite-kubetnetes-static-ip
+docker build -t kaustav4284/ignite-2.7:k8cluster-static-ip2 .
+docker push kaustav4284/ignite-2.7:k8cluster-static-ip2
+
+kubectl delete -f ignite-namespace.yaml
+kubectl create -f ignite-namespace.yaml
+
+kubectl delete -f ignite-account-role.yaml
+kubectl create -f ignite-account-role.yaml
+
+kubectl delete -f ignite-role-binding.yaml
+kubectl create -f ignite-role-binding.yaml
+
+kubectl delete -f ignite-service-account.yaml
+kubectl create -f ignite-service-account.yaml
+
+kubectl delete -f ignite-service.yaml
+kubectl create -f ignite-service.yaml
+
+kubectl delete -f ignite-deployment.yaml
+kubectl create -f ignite-deployment.yaml
+
+kubectl get pods -o wide
+
+kubectl scale --replicas=6 -f ignite-deployment.yaml 
+
+
