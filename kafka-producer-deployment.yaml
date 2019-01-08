@@ -3,7 +3,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   # Custom Ignite cluster's name.
-  name: ignite-cluster
+  name: kafka-producer-client
 spec:
   # A number of Ignite pods to be started by Kubernetes initially.
   replicas: 2
@@ -12,17 +12,14 @@ spec:
       labels:
         app: ignite
     spec:
+      
       serviceAccountName: ignite
+      
       containers:
         # Custom Ignite pod name.
-      - name: ignite-node
-        image: kaustav4284/ignite-2.7:k8cluster-static-ip2
-        env:
-        - name: OPTION_LIBS
-          value: ignite-kubernetes
-        - name: CONFIG_URI
-          value: file:///example-kube-rbac.xml
-        
+      - name: ignite-producer-client-node
+        image: kaustav4284/kafka-kube-producer01:firsttry
+               
         ports:
         # Ports to open.
         # Might be optional depending on your Kubernetes environment.

@@ -4,7 +4,7 @@ metadata:
   name: ignite
 roleRef:
   kind: ClusterRole
-  name: cluster-admin
+  name: ignite
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: ServiceAccount
